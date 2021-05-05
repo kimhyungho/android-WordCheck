@@ -1,12 +1,21 @@
 package com.appdev.wordcheck.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.appdev.wordcheck.R
+import com.appdev.wordcheck.databinding.ActivitySignUpBinding
+import com.appdev.wordcheck.ui.base.BaseActivity
+import com.appdev.wordcheck.ui.viewmodel.UserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
+    override val layoutResourceId: Int = R.layout.activity_main
+    override val viewModel: UserViewModel by viewModel()
+
+    override fun initStartView() {
+    }
+
+    override fun initBeforeBinding() {
+    }
+
+    override fun initAfterBinding() {
     }
 }

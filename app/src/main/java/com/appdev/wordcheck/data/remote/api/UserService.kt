@@ -3,6 +3,7 @@ package com.appdev.wordcheck.data.remote.api
 import com.appdev.wordcheck.data.model.network.response.ResponseNicknameCheck
 import com.appdev.wordcheck.data.model.network.response.ResponseNormalLogin
 import com.appdev.wordcheck.data.model.network.response.ResponseNormalSignUp
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,14 +14,14 @@ interface UserService {
     @FormUrlEncoded
     fun nicknameCheck(
         @Field("nickname") nickname: String
-    ): Call<ResponseNicknameCheck>
+    ): Single<ResponseNicknameCheck>
 
     @POST("accounts/normal_login/")
     @FormUrlEncoded
     fun normalLogin(
         @Field("nickname") nickname: String,
         @Field("password") password: String
-    ): Call<ResponseNormalLogin>
+    ): Single<ResponseNormalLogin>
 
     @POST("accounts/normal_signup/")
     @FormUrlEncoded
@@ -28,6 +29,6 @@ interface UserService {
         @Field("nickname") nickname: String,
         @Field("password") password: String,
         @Field("secret_code") secret_code: String
-    ): Call<ResponseNormalSignUp>
+    ): Single<ResponseNormalSignUp>
 }
 

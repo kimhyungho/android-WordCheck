@@ -4,12 +4,12 @@ import com.appdev.wordcheck.data.model.network.response.ResponseNicknameCheck
 import com.appdev.wordcheck.data.model.network.response.ResponseNormalLogin
 import com.appdev.wordcheck.data.model.network.response.ResponseNormalSignUp
 import com.appdev.wordcheck.data.remote.api.UserService
-import retrofit2.Call
+import io.reactivex.Single
 
 class UserRemoteDataSourceImpl(private val service: UserService) : UserRemoteDataSource {
     override fun nicknameCheck(
         nickname: String
-    ): Call<ResponseNicknameCheck> {
+    ): Single<ResponseNicknameCheck> {
         return service.nicknameCheck(nickname)
     }
 
@@ -17,13 +17,13 @@ class UserRemoteDataSourceImpl(private val service: UserService) : UserRemoteDat
         nickname: String,
         password: String,
         secret_code: String
-    ): Call<ResponseNormalSignUp> {
+    ): Single<ResponseNormalSignUp> {
         return service.normalSignUp(nickname, password, secret_code)
     }
 
     override fun normalLogin(
         nickname: String, password: String
-    ): Call<ResponseNormalLogin> {
+    ): Single<ResponseNormalLogin> {
         return service.normalLogin(nickname, password)
     }
 }

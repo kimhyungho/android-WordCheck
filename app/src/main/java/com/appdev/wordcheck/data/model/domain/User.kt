@@ -1,5 +1,5 @@
 package com.appdev.wordcheck.data.model.domain
 
 data class User(
-    val nickname: String
+    val account_token: String
 )
