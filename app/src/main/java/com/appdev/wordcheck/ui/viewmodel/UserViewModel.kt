@@ -3,7 +3,6 @@ package com.appdev.wordcheck.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.appdev.wordcheck.data.model.domain.User
 import com.appdev.wordcheck.data.repository.UserRepo
 import com.appdev.wordcheck.ui.base.BaseViewModel
 import com.appdev.wordcheck.util.Event
@@ -21,6 +20,18 @@ class UserViewModel(private val repo: UserRepo) : BaseViewModel() {
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage
 
+    fun normalLogin(nickname: String, password: String) {
+        addDisposable(
+            repo.normalLogin(nickname, password)
+                .subscribe({
+                    _loginTaskEvent.postValue(Event(true))
+                    _toastMessage.postValue(Event("로그인 성공"))
+                }, {
+                    _toastMessage.postValue(Event("로그인 실패"))
+                })
+        )
+    }
+
     fun nicknameCheck(nickname: String) {
         addDisposable(
             repo.nicknameCheck(nickname)
@@ -31,23 +42,29 @@ class UserViewModel(private val repo: UserRepo) : BaseViewModel() {
 
                 }, {
                     // 닉네임 체크 실패
+                    _nicknameCheckTaskEvent.postValue(Event(false))
                     _toastMessage.postValue(Event("이미 존재하는 닉네임"))
                 })
         )
     }
 
-    fun normalLogin(nickname: String, password: String) {
+    fun signUp(nickname: String, password: String, secret_code: String) {
         addDisposable(
-            repo.normalLogin(nickname, password)
+            repo.normalSignUp(nickname, password, secret_code)
                 .subscribe({
-                    _loginTaskEvent.postValue(Event(true))
-                    _toastMessage.postValue(Event("로그인 성공"))
+                    // 회원가입 성공
+                    _signUpTaskEvent.postValue(Event(true))
+                    _toastMessage.postValue(Event("회원가입 성공"))
                 }, {
+                    // 회원가입 실패
+                    _signUpTaskEvent.postValue(Event(false))
                     Log.d("kkkk", it.toString())
-                    _toastMessage.postValue(Event("로그인 실패"))
+                    _toastMessage.postValue(Event("회원가입 실패"))
                 })
+
         )
     }
+
 
     companion object {
         private val TAG = UserViewModel::class.java.simpleName

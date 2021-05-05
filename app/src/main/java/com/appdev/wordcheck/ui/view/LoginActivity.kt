@@ -26,12 +26,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
     }
 
     override fun initAfterBinding() {
+        observeLoginResult()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // 자동로그인
     }
 
     private fun observeLoginResult() {

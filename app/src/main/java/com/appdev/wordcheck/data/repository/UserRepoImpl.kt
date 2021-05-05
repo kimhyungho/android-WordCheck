@@ -1,10 +1,8 @@
 package com.appdev.wordcheck.data.repository
 
 import android.annotation.SuppressLint
-import com.appdev.wordcheck.data.model.domain.User
 import com.appdev.wordcheck.data.remote.datasource.UserRemoteDataSource
 import io.reactivex.Completable
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -23,6 +21,14 @@ class UserRepoImpl(
     override fun normalLogin(nickname: String, password: String): Completable {
         return Completable.fromSingle(
             userRemoteDataSource.normalLogin(nickname, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    override fun normalSignUp(nickname: String, password: String, secret_code: String): Completable {
+        return Completable.fromSingle(
+            userRemoteDataSource.normalSignUp(nickname, password, secret_code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

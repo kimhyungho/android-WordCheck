@@ -7,4 +7,5 @@ import io.reactivex.Single
 interface UserRepo {
     fun nicknameCheck(nickname: String): Completable
     fun normalLogin(nickname: String, password: String): Completable
+    fun normalSignUp(nickname: String, password: String, secret_code: String): Completable
 }
