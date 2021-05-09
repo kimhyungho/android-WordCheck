@@ -26,7 +26,7 @@ val networkModule = module {
         Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://sulrae.com:9900/api/")
+            .baseUrl("http://sulrae.com/api/")
             .build()
             .create(UserService::class.java)
     }

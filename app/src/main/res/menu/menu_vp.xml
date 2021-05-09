@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_just_look"
+        android:title="just_look"
+        />
+    <item
+        android:id="@+id/menu_test"
+        android:title="test"
+        />
+    <item
+        android:id="@+id/menu_add_word"
+        android:title="add_word"
+        />
+    <item
+        android:id="@+id/menu_bookmark"
+        android:title="bookmark"
+        />
+    <item
+        android:id="@+id/menu_wrong_word"
+        android:title="wrong_word"
+        />
+</menu>
