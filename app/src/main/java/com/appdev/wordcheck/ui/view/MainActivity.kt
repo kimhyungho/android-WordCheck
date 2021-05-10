@@ -26,8 +26,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
     override fun initAfterBinding() {
     }
 
+
+
     private fun initBottomNavigation() {
-        viewDataBinding.bnvMain.setOnNavigationItemReselectedListener {
+        viewDataBinding.bnvMain.setOnNavigationItemSelectedListener {
             var index by Delegates.notNull<Int>()
             when (it.itemId) {
                 R.id.menu_just_look -> index = 0

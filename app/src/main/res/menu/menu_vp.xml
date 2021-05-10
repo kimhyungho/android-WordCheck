@@ -2,22 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_just_look"
-        android:title="just_look"
+        android:icon="@drawable/ic_home"
+        android:title="그냥보기"
         />
     <item
         android:id="@+id/menu_test"
-        android:title="test"
+        android:icon="@drawable/ic_test"
+        android:title="테스트"
         />
     <item
         android:id="@+id/menu_add_word"
-        android:title="add_word"
+        android:title="추가"
         />
     <item
         android:id="@+id/menu_bookmark"
-        android:title="bookmark"
+        android:icon="@drawable/ic_bookmark"
+        android:title="즐찾"
         />
     <item
         android:id="@+id/menu_wrong_word"
-        android:title="wrong_word"
+        android:icon="@drawable/ic_wrong"
+        android:title="틀린 단어"
         />
 </menu>

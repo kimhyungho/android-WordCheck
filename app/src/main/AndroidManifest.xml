@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name=".WordCheckApplication"
         android:allowBackup="true"
@@ -14,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.SignUpActivity"></activity>
-        <activity android:name=".ui.view.LoginActivity">
+        <activity android:name=".ui.view.SearchActivity"></activity>
+        <activity android:name=".ui.view.SignUpActivity" />
+        <activity android:name=".ui.view.LoginActivity"></activity>
+        <activity android:name=".ui.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.view.MainActivity" />
     </application>
 
 </manifest>
