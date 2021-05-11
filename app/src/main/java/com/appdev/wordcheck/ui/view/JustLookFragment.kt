@@ -1,8 +1,10 @@
 package com.appdev.wordcheck.ui.view
 
 import android.content.Intent
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.databinding.FragmentJustLookBinding
+import com.appdev.wordcheck.ui.adapter.ContentAdapter
 import com.appdev.wordcheck.ui.base.BaseFragment
 import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 import com.appdev.wordcheck.util.EventObserver
@@ -15,24 +17,35 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
 
     override val viewModel: WordViewModel by viewModel<WordViewModel>()
 
+    private val contentAdapter = ContentAdapter()
+
     override fun initStartView() {
         initClickEvent()
-        initGetList()
+        initRecyclerView()
         activity!!.setupToast(this, viewModel.toastMessage)
     }
 
     override fun initDataBinding() {
+        viewModel.getContentList()
     }
 
     override fun initAfterBinding() {
+        observeContentList()
     }
 
-    private fun initGetList() {
-        viewModel.getContentList()
+
+    private fun observeContentList() {
         viewModel.getContentListTaskEvent.observe(this, EventObserver {
-
+            contentAdapter.data = it
         })
+    }
 
+    private fun initRecyclerView() {
+        viewDataBinding.rvJust.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = contentAdapter
+            setHasFixedSize(true)
+        }
     }
 
     private fun initClickEvent() {
