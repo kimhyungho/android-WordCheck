@@ -1,5 +1,6 @@
 package com.appdev.wordcheck.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.appdev.wordcheck.data.model.domain.Content
@@ -20,7 +21,6 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
             repo.getContentList()
                 .subscribe({
                     _getContentListTaskEvent.postValue(Event(it))
-
                 }, {
                     _toastMessage.postValue(Event("불러오기 실패"))
                 })

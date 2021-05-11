@@ -6,7 +6,7 @@ import com.appdev.wordcheck.util.LoginPreference
 import io.reactivex.Single
 
 class WordRemoteDataSourceImpl(private val service: WordService) : WordRemoteDataSource {
-    override fun getList(): Single<ResponseGetList> {
+    override fun getList(): Single<List<ResponseGetList>> {
         val auth_token = LoginPreference.getUserAccountToken()
         return service.getList(auth_token)
     }

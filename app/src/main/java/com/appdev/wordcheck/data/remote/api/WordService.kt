@@ -9,5 +9,5 @@ interface WordService {
     @GET("words/")
     fun getList(
         @Header("authorization") account_token: String
-    ): Single<ResponseGetList>
+    ): Single<List<ResponseGetList>>
 }

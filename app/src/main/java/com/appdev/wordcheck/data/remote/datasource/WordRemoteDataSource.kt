@@ -4,5 +4,5 @@ import com.appdev.wordcheck.data.model.network.response.ResponseGetList
 import io.reactivex.Single
 
 interface WordRemoteDataSource {
-    fun getList(): Single<ResponseGetList>
+    fun getList(): Single<List<ResponseGetList>>
 }

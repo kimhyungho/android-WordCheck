@@ -1,5 +1,6 @@
 package com.appdev.wordcheck.data.repository
 
+import android.util.Log
 import com.appdev.wordcheck.data.model.domain.Content
 import com.appdev.wordcheck.data.model.mapper.ContentMapper
 import com.appdev.wordcheck.data.remote.datasource.WordRemoteDataSource
