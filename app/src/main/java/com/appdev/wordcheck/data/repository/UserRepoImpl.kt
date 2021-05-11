@@ -2,6 +2,7 @@ package com.appdev.wordcheck.data.repository
 
 import android.annotation.SuppressLint
 import com.appdev.wordcheck.data.remote.datasource.UserRemoteDataSource
+import com.appdev.wordcheck.util.LoginPreference
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -22,6 +23,9 @@ class UserRepoImpl(
         return Completable.fromSingle(
             userRemoteDataSource.normalLogin(nickname, password)
                 .subscribeOn(Schedulers.io())
+                .map {
+                    LoginPreference.setUserPreference(it.account_token)
+                }
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }

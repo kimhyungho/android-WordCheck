@@ -25,6 +25,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
 
     override fun initAfterBinding() {
         observerNicknameCheckResult()
+        observerSignUpResult()
     }
 
     private fun observerNicknameCheckResult() {
@@ -35,6 +36,16 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
             } else {
                 viewDataBinding.txtNicknameCheck.text = "이미 사용중인 닉네임"
                 viewDataBinding.btnSignup2.isEnabled = false
+            }
+        })
+    }
+
+    private fun observerSignUpResult() {
+        viewModel.signUpTaskEvent.observe(this, EventObserver { success ->
+            if (success) {
+                // 회원가입 성공시
+            } else {
+                // 회원가입 실패시
             }
         })
     }

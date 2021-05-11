@@ -1,8 +1,8 @@
 package com.appdev.wordcheck.ui.view
 
 import android.content.Intent
+import android.util.Log
 import com.appdev.wordcheck.R
-import com.appdev.wordcheck.databinding.FragmentAddWordBinding
 import com.appdev.wordcheck.databinding.FragmentJustLookBinding
 import com.appdev.wordcheck.ui.base.BaseFragment
 import com.appdev.wordcheck.ui.viewmodel.WordViewModel
@@ -16,6 +16,7 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
 
     override fun initStartView() {
         initClickEvent()
+        initGetList()
     }
 
     override fun initDataBinding() {
@@ -24,11 +25,21 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
     override fun initAfterBinding() {
     }
 
+    private fun initGetList() {
+        viewModel.getContentList()
+
+    }
+
     private fun initClickEvent() {
-        viewDataBinding.tbJust.setOnClickListener { onToolbarClick() }
+// viewDataBinding.tbJust.setOnClickListener { onToolbarClick() }
+        viewDataBinding.tbJust.setOnClickListener {
+            Log.d("kkkk", viewModel.getContentListTaskEvent.value.toString())
+        }
+
     }
 
     private fun onToolbarClick() {
         startActivity(Intent(activity, SearchActivity::class.java))
     }
+
 }

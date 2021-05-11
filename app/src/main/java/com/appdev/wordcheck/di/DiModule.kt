@@ -1,11 +1,17 @@
 package com.appdev.wordcheck.di
 
 import com.appdev.wordcheck.data.remote.api.UserService
+import com.appdev.wordcheck.data.remote.api.WordService
 import com.appdev.wordcheck.data.remote.datasource.UserRemoteDataSource
 import com.appdev.wordcheck.data.remote.datasource.UserRemoteDataSourceImpl
+import com.appdev.wordcheck.data.remote.datasource.WordRemoteDataSource
+import com.appdev.wordcheck.data.remote.datasource.WordRemoteDataSourceImpl
 import com.appdev.wordcheck.data.repository.UserRepo
 import com.appdev.wordcheck.data.repository.UserRepoImpl
+import com.appdev.wordcheck.data.repository.WordRepo
+import com.appdev.wordcheck.data.repository.WordRepoImpl
 import com.appdev.wordcheck.ui.viewmodel.UserViewModel
+import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -30,6 +36,15 @@ val networkModule = module {
             .build()
             .create(UserService::class.java)
     }
+
+    single<WordService> {
+        Retrofit.Builder()
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://sulrae.com/api/")
+            .build()
+            .create(WordService::class.java)
+    }
 }
 
 val localDataSourceModule = module {
@@ -37,14 +52,17 @@ val localDataSourceModule = module {
 
 val remoteDataSourceModule = module {
     single<UserRemoteDataSource> { UserRemoteDataSourceImpl(get()) }
+    single<WordRemoteDataSource> { WordRemoteDataSourceImpl(get()) }
 }
 
 val repositoryModule = module {
     single<UserRepo> { UserRepoImpl(get())}
+    single<WordRepo> { WordRepoImpl(get()) }
 }
 
 val viewModelModule = module {
     viewModel { UserViewModel(get()) }
+    viewModel { WordViewModel(get()) }
 }
 
 val DiModule = listOf(

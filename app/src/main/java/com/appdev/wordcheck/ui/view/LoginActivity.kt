@@ -1,17 +1,16 @@
 package com.appdev.wordcheck.ui.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.databinding.ActivityLoginBinding
 import com.appdev.wordcheck.ui.base.BaseActivity
 import com.appdev.wordcheck.ui.viewmodel.UserViewModel
 import com.appdev.wordcheck.util.EventObserver
+import com.appdev.wordcheck.util.LoginPreference.getUserAccountToken
 import com.appdev.wordcheck.util.setupToast
+import com.appdev.wordcheck.util.LoginPreference.isAutoLoginSet
 import com.appdev.wordcheck.util.shortToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
     override val layoutResourceId: Int = R.layout.activity_login
@@ -29,15 +28,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
         observeLoginResult()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-
-    }
 
     override fun onStart() {
         super.onStart()
-        // 자동로그인
+        autoLogin()
     }
 
     private fun observeLoginResult() {
@@ -61,9 +55,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
     private fun onLoginButtonClick() {
         val nickname = viewDataBinding.etNickname.text.toString()
         val password = viewDataBinding.etPassword.text.toString()
+        val autoLogin = viewDataBinding.cbLogin.isChecked
 
         if (nickname.isNotEmpty() && password.isNotEmpty()) {
-            viewModel.normalLogin(nickname, password)
+            viewModel.normalLogin(nickname, password, autoLogin)
 
         } else {
             shortToast("빈 칸을 채워주세요")
@@ -72,6 +67,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
 
     private fun onSignUpButtonClick() {
         startActivity(Intent(this, SignUpActivity::class.java))
+    }
+
+    private fun autoLogin() {
+        if (isAutoLoginSet() && (getUserAccountToken() != "null")) {
+            startMainActivity()
+        }
     }
 
 

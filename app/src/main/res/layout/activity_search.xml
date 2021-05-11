@@ -43,61 +43,14 @@
             app:srcCompat="@drawable/abc_vector_test"
             app:tint="#C6C6C6" />
 
-        <TextView
-            android:id="@+id/txt_recent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:text="최근 검색어"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search"
+            android:layout_width="409dp"
+            android:layout_height="672dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frame_search" />
 
-        <TextView
-            android:id="@+id/txt_all_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:text="전체삭제"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frame_search" />
-
-        <RadioGroup
-            android:id="@+id/toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:checkedButton="@+id/off"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/tb_search"
-            app:layout_constraintEnd_toEndOf="@+id/tb_search"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <RadioButton
-                android:background="@color/colorPrimary"
-                android:id="@+id/off"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="off" />
-
-            <RadioButton
-                android:id="@+id/on"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="on" />
-        </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

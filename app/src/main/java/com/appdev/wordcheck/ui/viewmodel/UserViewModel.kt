@@ -1,11 +1,11 @@
 package com.appdev.wordcheck.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.appdev.wordcheck.data.repository.UserRepo
 import com.appdev.wordcheck.ui.base.BaseViewModel
 import com.appdev.wordcheck.util.Event
+import com.appdev.wordcheck.util.LoginPreference
 
 class UserViewModel(private val repo: UserRepo) : BaseViewModel() {
     private val _nicknameCheckTaskEvent = MutableLiveData<Event<Boolean>>()
@@ -20,10 +20,11 @@ class UserViewModel(private val repo: UserRepo) : BaseViewModel() {
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage
 
-    fun normalLogin(nickname: String, password: String) {
+    fun normalLogin(nickname: String, password: String, autoLogin: Boolean) {
         addDisposable(
             repo.normalLogin(nickname, password)
                 .subscribe({
+                    LoginPreference.setAutoLogin(autoLogin)
                     _loginTaskEvent.postValue(Event(true))
                     _toastMessage.postValue(Event("로그인 성공"))
                 }, {
@@ -58,7 +59,6 @@ class UserViewModel(private val repo: UserRepo) : BaseViewModel() {
                 }, {
                     // 회원가입 실패
                     _signUpTaskEvent.postValue(Event(false))
-                    Log.d("kkkk", it.toString())
                     _toastMessage.postValue(Event("회원가입 실패"))
                 })
 

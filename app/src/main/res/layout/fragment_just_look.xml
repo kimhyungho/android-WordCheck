@@ -28,7 +28,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tb_just"
             app:layout_constraintStart_toStartOf="@+id/tb_just"
             app:layout_constraintTop_toTopOf="@+id/tb_just"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/txt_search"
