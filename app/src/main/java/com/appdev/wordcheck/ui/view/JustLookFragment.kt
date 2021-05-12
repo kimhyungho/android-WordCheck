@@ -36,7 +36,6 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
         observeContentList()
     }
 
-
     private fun observeContentList() {
         viewModel.getContentListTaskEvent.observe(this, EventObserver {
             contentAdapter.data = it

@@ -27,7 +27,9 @@ class ContentAdapter(val activity: Activity) : RecyclerView.Adapter<ContentAdapt
         fun onBind(item: Content) {
             binding.content = item
             binding.containerContent.setOnClickListener {
-                activity.startActivity(Intent(activity, DetailContentActivity::class.java))
+                val intent = Intent(activity, DetailContentActivity::class.java)
+                intent.putExtra("content", item.content)
+                activity.startActivity(intent)
             }
         }
 

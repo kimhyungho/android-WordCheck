@@ -19,6 +19,9 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
     private val _toastMessage = MutableLiveData<Event<String>>()
     val toastMessage: LiveData<Event<String>> = _toastMessage
 
+    private val _addWordTaskEvent = MutableLiveData<Event<Boolean>>()
+    val addWordTaskEvent: LiveData<Event<Boolean>> = _addWordTaskEvent
+
 
     fun getContentList() {
         addDisposable(
@@ -38,6 +41,19 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
                     _getContentWordTaskEvent.postValue(Event(it))
                 }, {
                     _toastMessage.postValue(Event("불러오기 실패"))
+                })
+        )
+    }
+
+    fun addWord(contents: String, spelling: String, category: String, meaning: String) {
+        addDisposable(
+            repo.addWord(contents, spelling, category, meaning)
+                .subscribe({
+                    _addWordTaskEvent.postValue(Event(true))
+                    _toastMessage.postValue(Event("단어등록 성공"))
+                }, {
+                    _addWordTaskEvent.postValue(Event(false))
+                    _toastMessage.postValue(Event("단어등록 실패"))
                 })
         )
     }

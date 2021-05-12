@@ -6,6 +6,7 @@ import com.appdev.wordcheck.data.model.domain.Word
 import com.appdev.wordcheck.data.model.mapper.ContentMapper
 import com.appdev.wordcheck.data.model.mapper.WordMapper
 import com.appdev.wordcheck.data.remote.datasource.WordRemoteDataSource
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,5 +30,18 @@ class WordRepoImpl(
                 WordMapper.map(it)
             }
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun addWord(
+        contents: String,
+        spelling: String,
+        category: String,
+        meaning: String
+    ): Completable {
+        return Completable.fromSingle(
+            wordRemoteDataSource.addWord(contents, spelling, category, meaning)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
     }
 }

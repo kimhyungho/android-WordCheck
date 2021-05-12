@@ -1,5 +1,7 @@
 package com.appdev.wordcheck.ui.view
 
+import android.content.Intent
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.databinding.ActivityDetailContentBinding
@@ -24,7 +26,7 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
     }
 
     override fun initBeforeBinding() {
-        viewModel.getContentWordList("day1")
+        getContentWordList()
     }
 
     override fun initAfterBinding() {
@@ -35,6 +37,12 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
         viewModel.getContentWordTaskEvent.observe(this, EventObserver {
             wordAdapter.data = it
         })
+    }
+
+    private fun getContentWordList() {
+        val content = intent.getStringExtra("content")
+        Log.d("kkkk", content?: "null")
+        viewModel.getContentWordList(content?: "null")
     }
 
     private fun initRecyclerView() {
