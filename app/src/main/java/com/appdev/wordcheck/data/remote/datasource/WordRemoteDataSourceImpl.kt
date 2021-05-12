@@ -1,6 +1,7 @@
 package com.appdev.wordcheck.data.remote.datasource
 
 import com.appdev.wordcheck.data.model.network.response.ResponseAddWord
+import com.appdev.wordcheck.data.model.network.response.ResponseDeleteWord
 import com.appdev.wordcheck.data.model.network.response.ResponseGetList
 import com.appdev.wordcheck.data.model.network.response.ResponseGetWord
 import com.appdev.wordcheck.data.remote.api.WordService
@@ -26,5 +27,10 @@ class WordRemoteDataSourceImpl(private val service: WordService) : WordRemoteDat
     ): Single<ResponseAddWord> {
         val auth_token = LoginPreference.getUserAccountToken()
         return service.addWord(auth_token, contents, spelling, category, meaning)
+    }
+
+    override fun deleteWord(id: Int): Single<ResponseDeleteWord> {
+        val auth_token = LoginPreference.getUserAccountToken()
+        return service.deleteWord(auth_token, id)
     }
 }

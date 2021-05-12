@@ -22,6 +22,9 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
     private val _addWordTaskEvent = MutableLiveData<Event<Boolean>>()
     val addWordTaskEvent: LiveData<Event<Boolean>> = _addWordTaskEvent
 
+    private val _deleteWordTaskEvent = MutableLiveData<Event<Boolean>>()
+    val deleteWordTaskEvent: LiveData<Event<Boolean>> = _deleteWordTaskEvent
+
 
     fun getContentList() {
         addDisposable(
@@ -54,6 +57,20 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
                 }, {
                     _addWordTaskEvent.postValue(Event(false))
                     _toastMessage.postValue(Event("단어등록 실패"))
+                })
+        )
+    }
+
+    fun deleteWord(id: Int, contents: String) {
+        addDisposable(
+            repo.deleteWord(id)
+                .subscribe({
+                    getContentWordList(contents)
+                    _deleteWordTaskEvent.postValue(Event(true))
+                    _toastMessage.postValue(Event("단어삭제 성공"))
+                }, {
+                    _deleteWordTaskEvent.postValue(Event(false))
+                    _toastMessage.postValue(Event("단어삭제 실패"))
                 })
         )
     }

@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.appdev.wordcheck.data.model.domain.Word
 import com.appdev.wordcheck.databinding.ItemWordListBinding
+import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 
-class WordAdapter() : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
+class WordAdapter(val viewModel: WordViewModel) : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     private var _data = mutableListOf<Word>()
     var data: List<Word> = _data
         set(value) {
@@ -18,7 +19,11 @@ class WordAdapter() : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemWordListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: Word) {
+            val id = item.id
+            val contents = item.contents
+
             binding.word = item
+            binding.imgDelete.setOnClickListener { onDeleteButtonClick(id, contents) }
         }
 
 
@@ -38,5 +43,9 @@ class WordAdapter() : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return _data.size
+    }
+
+    private fun onDeleteButtonClick(id: Int, contents: String) {
+        viewModel.deleteWord(id, contents)
     }
 }

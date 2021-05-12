@@ -44,4 +44,12 @@ class WordRepoImpl(
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
+
+    override fun deleteWord(id: Int): Completable {
+        return Completable.fromSingle(
+            wordRemoteDataSource.deleteWord(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 }

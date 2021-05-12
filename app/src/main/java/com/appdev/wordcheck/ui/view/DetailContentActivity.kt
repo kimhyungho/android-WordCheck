@@ -17,7 +17,7 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
 
     override val viewModel: WordViewModel by viewModel()
 
-    private val wordAdapter: WordAdapter = WordAdapter()
+    private lateinit var wordAdapter: WordAdapter
 
     override fun initStartView() {
         initRecyclerView()
@@ -41,11 +41,12 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
 
     private fun getContentWordList() {
         val content = intent.getStringExtra("content")
-        Log.d("kkkk", content?: "null")
-        viewModel.getContentWordList(content?: "null")
+        Log.d("kkkk", content ?: "null")
+        viewModel.getContentWordList(content ?: "null")
     }
 
     private fun initRecyclerView() {
+        wordAdapter = WordAdapter(viewModel)
         viewDataBinding.rvDetail.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = wordAdapter

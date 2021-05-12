@@ -9,4 +9,5 @@ interface WordRepo {
     fun getContentList(): Single<List<Content>>
     fun getContentWordList(content: String): Single<List<Word>>
     fun addWord(contents: String, spelling: String, category: String, meaning: String): Completable
+    fun deleteWord(id: Int): Completable
 }

@@ -1,6 +1,7 @@
 package com.appdev.wordcheck.data.remote.api
 
 import com.appdev.wordcheck.data.model.network.response.ResponseAddWord
+import com.appdev.wordcheck.data.model.network.response.ResponseDeleteWord
 import com.appdev.wordcheck.data.model.network.response.ResponseGetList
 import com.appdev.wordcheck.data.model.network.response.ResponseGetWord
 import io.reactivex.Single
@@ -34,4 +35,10 @@ interface WordService {
         @Field("category") category: String,
         @Field("meaning") meaning: String
     ): Single<ResponseAddWord>
+
+    @DELETE("words/{id}/")
+    fun deleteWord(
+        @Header("authorization") account_token: String,
+        @Path("id") id: Int
+    ): Single<ResponseDeleteWord>
 }

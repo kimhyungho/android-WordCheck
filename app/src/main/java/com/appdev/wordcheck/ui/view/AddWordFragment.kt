@@ -5,6 +5,7 @@ import com.appdev.wordcheck.databinding.FragmentAddWordBinding
 import com.appdev.wordcheck.ui.base.BaseFragment
 import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 import com.appdev.wordcheck.util.setupToast
+import com.appdev.wordcheck.util.shortToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -26,9 +27,7 @@ class AddWordFragment : BaseFragment<FragmentAddWordBinding, WordViewModel>() {
     }
 
     private fun initClickEvent() {
-        viewDataBinding.btnAddWord.setOnClickListener {
-            onAddButtonClick()
-        }
+        viewDataBinding.btnAddWord.setOnClickListener { onAddButtonClick() }
     }
 
     private fun onAddButtonClick() {
@@ -36,6 +35,12 @@ class AddWordFragment : BaseFragment<FragmentAddWordBinding, WordViewModel>() {
         val spelling = viewDataBinding.etSpelling.text.toString()
         val meaning = viewDataBinding.etMeaning.text.toString()
         val category = viewDataBinding.spCategory.selectedItem.toString()
-        viewModel.addWord(contents, spelling, category, meaning)
+
+        if (contents.isNotEmpty() && spelling.isNotEmpty() && meaning.isNotEmpty() && category.isNotEmpty()) {
+            viewModel.addWord(contents, spelling, category, meaning)
+        } else {
+            activity!!.shortToast("빈칸을 채워주세요.")
+        }
+
     }
 }

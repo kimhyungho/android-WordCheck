@@ -27,9 +27,8 @@ class ContentAdapter(val activity: Activity) : RecyclerView.Adapter<ContentAdapt
         fun onBind(item: Content) {
             binding.content = item
             binding.containerContent.setOnClickListener {
-                val intent = Intent(activity, DetailContentActivity::class.java)
-                intent.putExtra("content", item.content)
-                activity.startActivity(intent)
+                val content = item.content
+                onContainerClick(content)
             }
         }
 
@@ -49,5 +48,12 @@ class ContentAdapter(val activity: Activity) : RecyclerView.Adapter<ContentAdapt
 
     override fun getItemCount(): Int {
         return _data.size
+    }
+
+    private fun onContainerClick(content: String) {
+        val intent = Intent(activity, DetailContentActivity::class.java)
+        intent.putExtra("content", content)
+        activity.startActivity(intent)
+
     }
 }
