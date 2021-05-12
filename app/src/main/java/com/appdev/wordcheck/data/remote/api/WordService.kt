@@ -13,13 +13,13 @@ interface WordService {
         @Header("authorization") account_token: String
     ): Single<List<ResponseGetList>>
 
-    @GET("words/")
+    @GET("words/detail_list/")
     fun getContentWord(
         @Header("authorization") account_token: String,
         @Query("contents") contents: String
     ): Single<List<ResponseGetWord>>
 
-    @GET("words/")
+    @GET("words/detail_list/")
     fun getContentWord(
         @Header("authorization") account_token: String,
         @Query("contents") contents: String,

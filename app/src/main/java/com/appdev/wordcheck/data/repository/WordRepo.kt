@@ -6,5 +6,5 @@ import io.reactivex.Single
 
 interface WordRepo {
     fun getContentList(): Single<List<Content>>
-    fun getContentWordList(): Single<List<Word>>
+    fun getContentWordList(content: String): Single<List<Word>>
 }

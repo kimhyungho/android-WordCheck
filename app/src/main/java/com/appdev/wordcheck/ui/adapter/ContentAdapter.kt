@@ -1,13 +1,18 @@
 package com.appdev.wordcheck.ui.adapter
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.appdev.wordcheck.data.model.domain.Content
 import com.appdev.wordcheck.databinding.ItemContentListBinding
+import com.appdev.wordcheck.ui.view.DetailContentActivity
 
-class ContentAdapter() : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
+class ContentAdapter(val activity: Activity) : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
+
     private var _data = mutableListOf<Content>()
+
     var data: List<Content> = _data
         set(value) {
             _data.clear()
@@ -17,10 +22,14 @@ class ContentAdapter() : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemContentListBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+
         fun onBind(item: Content) {
             binding.content = item
+            binding.containerContent.setOnClickListener {
+                activity.startActivity(Intent(activity, DetailContentActivity::class.java))
+            }
         }
-
 
     }
 
@@ -33,7 +42,7 @@ class ContentAdapter() : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.onBind(_data[position])
-        
+
     }
 
     override fun getItemCount(): Int {

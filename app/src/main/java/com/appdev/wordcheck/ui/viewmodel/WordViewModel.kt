@@ -31,9 +31,9 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
         )
     }
 
-    fun getContentWordList() {
+    fun getContentWordList(content: String) {
         addDisposable(
-            repo.getContentWordList()
+            repo.getContentWordList(content)
                 .subscribe({
                     _getContentWordTaskEvent.postValue(Event(it))
                 }, {
