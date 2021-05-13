@@ -73,6 +73,14 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
     testImplementation "org.koin:koin-test:$koinVersion"
 
+    //room
+    def roomVersion = "2.2.5"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+    testImplementation "androidx.room:room-testing:$roomVersion"
+
     //viewpager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
