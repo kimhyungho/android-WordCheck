@@ -22,6 +22,7 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
 
     override fun initStartView() {
         initRecyclerView()
+        initClickEvent()
         setupToast(this, viewModel.toastMessage)
 
     }
@@ -57,5 +58,13 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
             adapter = wordAdapter
             setHasFixedSize(true)
         }
+    }
+
+    private fun initClickEvent() {
+        viewDataBinding.tbDetail.setNavigationOnClickListener { onBackButtonClick()}
+    }
+
+    private fun onBackButtonClick() {
+        finish()
     }
 }

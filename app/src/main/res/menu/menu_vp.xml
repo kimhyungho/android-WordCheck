@@ -11,6 +11,7 @@
         android:title="테스트"
         />
     <item
+        android:icon="@drawable/ic_plus"
         android:id="@+id/menu_add_word"
         android:title="추가"
         />

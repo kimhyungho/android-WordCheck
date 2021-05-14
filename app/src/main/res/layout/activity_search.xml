@@ -7,6 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/dark1Color"
         tools:context=".ui.view.SearchActivity">
 
 
@@ -14,11 +15,13 @@
             android:id="@+id/tb_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/dark2Color"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back" />
 
         <FrameLayout
             android:id="@+id/frame_search"
@@ -30,18 +33,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tb_search">
 
         </FrameLayout>
-
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:padding="12dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tb_search"
-            app:layout_constraintStart_toStartOf="@+id/tb_search"
-            app:layout_constraintTop_toTopOf="@+id/tb_search"
-            app:srcCompat="@drawable/abc_vector_test"
-            app:tint="#C6C6C6" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search"
@@ -56,12 +47,15 @@
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/whiteColor"
+            android:layout_marginStart="60dp"
+            android:background="@color/dark2Color"
             android:hint="단어 검색"
             android:inputType="textPersonName"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/whiteColor"
             app:layout_constraintBottom_toTopOf="@+id/frame_search"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintStart_toStartOf="@+id/tb_search"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

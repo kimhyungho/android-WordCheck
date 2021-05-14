@@ -103,6 +103,9 @@ class TestAdapter(val activity: Activity, val viewModel: WordViewModel) :
                 viewModel.scoreWord(id, "wrong")
                 viewModel
             }
+            testDialog.btn_close.setOnClickListener {
+                testDialog.dismiss()
+            }
             testDialog.show()
         })
 

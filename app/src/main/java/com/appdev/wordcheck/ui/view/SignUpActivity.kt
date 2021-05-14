@@ -8,6 +8,7 @@ import com.appdev.wordcheck.ui.base.BaseActivity
 import com.appdev.wordcheck.ui.viewmodel.UserViewModel
 import com.appdev.wordcheck.util.EventObserver
 import com.appdev.wordcheck.util.setupToast
+import com.appdev.wordcheck.util.shortToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
@@ -44,6 +45,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
         viewModel.signUpTaskEvent.observe(this, EventObserver { success ->
             if (success) {
                 // 회원가입 성공시
+                finish()
             } else {
                 // 회원가입 실패시
             }
@@ -54,6 +56,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
     private fun initClickEvent() {
         viewDataBinding.btnCheckNickname.setOnClickListener { onNicknameCheckButtonClick() }
         viewDataBinding.btnSignup2.setOnClickListener { onSignUpButtonClick() }
+        viewDataBinding.tb.setNavigationOnClickListener { onBackButtonClick() }
     }
 
     private fun initChangeEvent() {
@@ -82,9 +85,15 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
     private fun onSignUpButtonClick() {
         val nickname = viewDataBinding.etNickname.text.toString()
         val password = viewDataBinding.etPassword.text.toString()
+        val password_check = viewDataBinding.etPasswordCheck.text.toString()
         val secret_code = viewDataBinding.etSecretCode.text.toString()
 
-        viewModel.signUp(nickname, password, secret_code)
+        if (password == password_check) {
+            viewModel.signUp(nickname, password, secret_code)
+        } else {
+            shortToast("비밀번호가 동일하지 않습니다.")
+        }
+
 
     }
 
@@ -93,6 +102,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, UserViewModel>() {
 
         viewModel.nicknameCheck(nickname)
 
+    }
+
+    private fun onBackButtonClick() {
+        finish()
     }
 
 

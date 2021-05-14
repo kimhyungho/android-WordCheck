@@ -13,47 +13,82 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:background="@color/dark1Color">
 
         <TextView
             android:id="@+id/txt_spelling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="12dp"
             android:text="@{word.spelling}"
-            android:textSize="18sp"
+            android:textColor="@color/whiteColor"
+            android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txt_meaning"
             app:layout_constraintStart_toEndOf="@+id/img_bookmark"
-            app:layout_constraintTop_toTopOf="@+id/img_bookmark"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="abcde" />
 
         <ImageView
             android:id="@+id/img_bookmark"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_bookmark" />
+            app:srcCompat="@drawable/ic_full_star"
+            app:tint="@color/dark2Color" />
 
         <ImageView
             android:id="@+id/img_delete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            app:srcCompat="@drawable/ic_delete"
+            app:tint="@color/whiteColor" />
 
         <TextView
             android:id="@+id/txt_meaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="12dp"
             android:text="@{word.meaning}"
+            android:textColor="@color/whiteColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_bookmark"
             app:layout_constraintTop_toBottomOf="@+id/txt_spelling"
             tools:text="뜻입니다." />
+
+        <TextView
+            android:id="@+id/txt_wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@{Integer.toString(word.wrong_count)}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_delete"
+            app:layout_constraintTop_toBottomOf="@+id/txt_category"
+            tools:text="1번틀림" />
+
+        <TextView
+            android:id="@+id/txt_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@{word.category}"
+            android:textColor="@color/whiteColor"
+            app:layout_constraintBottom_toTopOf="@+id/txt_wrong"
+            app:layout_constraintEnd_toStartOf="@+id/img_delete"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="전치사" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/dark2Color"
         tools:context=".ui.view.SignUpActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -16,7 +17,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/abc_vector_test"
-            app:title="회원가입" />
+            app:title="회원가입"
+            app:titleTextColor="@color/whiteColor" />
 
         <EditText
             android:id="@+id/et_nickname"
@@ -28,6 +30,8 @@
             android:background="@drawable/input_box"
             android:hint="닉네임"
             android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/whiteColor"
             app:layout_constraintEnd_toStartOf="@+id/btn_check_nickname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb" />
@@ -55,6 +59,8 @@
             android:hint="패스워드"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/whiteColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +77,8 @@
             android:hint="패스워드 확인"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/whiteColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_password" />
@@ -96,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/whiteColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
@@ -110,6 +119,8 @@
             android:hint="시크릿 코드"
             android:inputType="textPersonName"
             android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/whiteColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

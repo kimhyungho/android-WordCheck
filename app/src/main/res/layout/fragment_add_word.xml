@@ -10,14 +10,19 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/dark1Color">
 
             <EditText
                 android:id="@+id/et_contents"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
+                android:background="@drawable/input_box"
+                android:padding="8dp"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_content" />
@@ -29,6 +34,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
                 android:text="단어"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_contents" />
 
@@ -39,6 +45,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
                 android:text="뜻"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_spelling" />
 
@@ -47,7 +54,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
+                android:background="@drawable/input_box"
+                android:padding="8dp"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_meaning" />
@@ -59,6 +70,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
                 android:text="품사"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_meaning" />
 
@@ -69,6 +81,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:text="목차"
+                android:textColor="@color/whiteColor"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title" />
@@ -78,9 +91,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
+                android:background="@drawable/input_box"
                 android:entries="@array/spinner_category"
+                android:padding="8dp"
+                android:popupBackground="@color/dark2Color"
+                android:theme="@style/mySpinnerItemStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_category" />
@@ -92,6 +109,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:text="단어추가"
+                android:textColor="@color/whiteColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +120,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
+                android:background="@drawable/input_box"
+                android:padding="8dp"
+                android:textColor="@color/whiteColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_spelling" />
@@ -118,6 +140,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sp_category" />
+
+            <ImageView
+                android:id="@+id/img_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_category"
+                app:layout_constraintEnd_toEndOf="@+id/sp_category"
+                app:layout_constraintTop_toTopOf="@+id/sp_category"
+                app:srcCompat="@android:drawable/arrow_down_float" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
