@@ -41,4 +41,24 @@ interface WordService {
         @Header("authorization") account_token: String,
         @Path("id") id: Int
     ): Single<ResponseDeleteWord>
+
+    @GET("words/search/")
+    fun searchWord(
+        @Header("authorization") account_token: String,
+        @Query("target") target: String
+    ): Single<List<ResponseGetWord>>
+
+    @PATCH("words/{id}/")
+    fun scoreWord(
+        @Header("authorization") account_token: String,
+        @Path("id") id: Int,
+        @Query("state") state: String
+    ): Single<ResponseDeleteWord>
+
+    @GET("words/detail_list/")
+    fun getWrongWord(
+        @Header("authorization") account_token: String,
+        @Query("wrong_count") wrong_count: Int
+    ): Single<List<ResponseGetWord>>
+
 }

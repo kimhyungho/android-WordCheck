@@ -10,6 +10,7 @@ import com.appdev.wordcheck.ui.base.BaseActivity
 import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 import com.appdev.wordcheck.util.EventObserver
 import com.appdev.wordcheck.util.setupToast
+import com.appdev.wordcheck.util.shortToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordViewModel>() {
@@ -41,8 +42,12 @@ class DetailContentActivity : BaseActivity<ActivityDetailContentBinding, WordVie
 
     private fun getContentWordList() {
         val content = intent.getStringExtra("content")
-        Log.d("kkkk", content ?: "null")
-        viewModel.getContentWordList(content ?: "null")
+        val wrong_count = intent.getIntExtra("wrong_count", 0)
+        if (wrong_count == 0 && content != null) {
+            viewModel.getContentWordList(content ?: "null")
+        } else if (wrong_count != 0 && content == null) {
+            viewModel.getWrongWord(wrong_count)
+        }
     }
 
     private fun initRecyclerView() {

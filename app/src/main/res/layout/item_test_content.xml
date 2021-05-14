@@ -1,43 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
-            name="content"
+            name="data"
             type="com.appdev.wordcheck.data.model.domain.Content" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_content"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingTop="10dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="10dp">
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/item_content_container"
-            android:layout_width="0dp"
-            android:layout_height="91dp"
+            android:id="@+id/btn_conent_container"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
             android:background="@drawable/button"
-            android:backgroundTint="@color/dark2Color"
-            android:elevation="5dp"
+            android:backgroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/txt_content_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{content.content}"
+                android:text="@{data.content}"
                 android:textColor="@color/whiteColor"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,5 +40,4 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

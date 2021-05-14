@@ -33,4 +33,21 @@ class WordRemoteDataSourceImpl(private val service: WordService) : WordRemoteDat
         val auth_token = LoginPreference.getUserAccountToken()
         return service.deleteWord(auth_token, id)
     }
+
+    override fun searchWord(target: String): Single<List<ResponseGetWord>> {
+        val auth_token = LoginPreference.getUserAccountToken()
+        return service.searchWord(auth_token, target)
+    }
+
+    override fun scoreWord(id: Int, state: String): Single<ResponseDeleteWord> {
+        val auth_token = LoginPreference.getUserAccountToken()
+        return service.scoreWord(auth_token, id, state)
+
+    }
+
+    override fun getWrongWord(wrong_count: Int): Single<List<ResponseGetWord>> {
+        val auth_token = LoginPreference.getUserAccountToken()
+        return service.getWrongWord(auth_token, wrong_count)
+
+    }
 }

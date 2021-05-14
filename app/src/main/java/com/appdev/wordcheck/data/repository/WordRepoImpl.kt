@@ -52,4 +52,31 @@ class WordRepoImpl(
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
+
+    override fun searchWord(target: String): Single<List<Word>> {
+        return wordRemoteDataSource.searchWord(target)
+            .subscribeOn(Schedulers.io())
+            .map {
+                WordMapper.map(it)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+
+    override fun scoreWord(id: Int, state: String): Completable {
+        return Completable.fromSingle(
+            wordRemoteDataSource.scoreWord(id, state)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    override fun getWrongWord(wrong_count: Int): Single<List<Word>> {
+        return wordRemoteDataSource.getWrongWord(wrong_count)
+            .subscribeOn(Schedulers.io())
+            .map {
+                WordMapper.map(it)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 }

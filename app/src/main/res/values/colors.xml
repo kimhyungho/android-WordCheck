@@ -8,4 +8,6 @@
     <color name="yellowColor">#eaa73b</color>
     <color name="greenColor">#3aa45c</color>
     <color name="blueColor">#3e9cd0</color>
+    <color name="dark1Color">#202329</color>
+    <color name="dark2Color">#2b2e35</color>
 </resources>

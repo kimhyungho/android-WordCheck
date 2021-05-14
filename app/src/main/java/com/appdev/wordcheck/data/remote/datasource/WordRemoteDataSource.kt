@@ -16,6 +16,8 @@ interface WordRemoteDataSource {
         category: String,
         meaning: String
     ): Single<ResponseAddWord>
-
     fun deleteWord(id: Int): Single<ResponseDeleteWord>
+    fun searchWord(target: String): Single<List<ResponseGetWord>>
+    fun scoreWord(id: Int, state: String): Single<ResponseDeleteWord>
+    fun getWrongWord(wrong_count: Int): Single<List<ResponseGetWord>>
 }

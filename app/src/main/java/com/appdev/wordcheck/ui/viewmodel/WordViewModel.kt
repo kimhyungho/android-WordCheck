@@ -25,6 +25,12 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
     private val _deleteWordTaskEvent = MutableLiveData<Event<Boolean>>()
     val deleteWordTaskEvent: LiveData<Event<Boolean>> = _deleteWordTaskEvent
 
+    private val _searchWordTaskEvent = MutableLiveData<Event<List<Word>>>()
+    val searchWordTaskEvent: LiveData<Event<List<Word>>> = _searchWordTaskEvent
+
+    private val _scoreWordTaskEvent = MutableLiveData<Event<Boolean>>()
+    val scoreWordTaskEvent: LiveData<Event<Boolean>> = _scoreWordTaskEvent
+
 
     fun getContentList() {
         addDisposable(
@@ -71,6 +77,43 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
                 }, {
                     _deleteWordTaskEvent.postValue(Event(false))
                     _toastMessage.postValue(Event("단어삭제 실패"))
+                })
+        )
+    }
+
+    fun searchWord(target: String) {
+        addDisposable(
+            repo.searchWord(target)
+                .subscribe({
+                    _searchWordTaskEvent.postValue(Event(it))
+                }, {
+                    _toastMessage.postValue(Event("단어검색 실패"))
+                })
+        )
+    }
+
+    fun scoreWord(id: Int, state: String) {
+        addDisposable(
+            repo.scoreWord(id, state)
+                .subscribe({
+                    _scoreWordTaskEvent.postValue(Event(true))
+                    _toastMessage.postValue(Event("채점 완료"))
+
+                }, {
+                    _scoreWordTaskEvent.postValue(Event(false))
+                    _toastMessage.postValue(Event("단어채점 실패"))
+                })
+        )
+
+    }
+
+    fun getWrongWord(wrong_count: Int) {
+        addDisposable(
+            repo.getWrongWord(wrong_count)
+                .subscribe({
+                    _getContentWordTaskEvent.postValue(Event(it))
+                }, {
+                    _toastMessage.postValue(Event("단어 불러오기 실패"))
                 })
         )
     }
