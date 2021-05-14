@@ -71,9 +71,11 @@ class TestAdapter(val activity: Activity, val viewModel: WordViewModel) :
             val testDialog = Dialog(activity)
             testDialog.setContentView(R.layout.popup_test)
             testDialog.txt_spelling.text = wordList[i].spelling
+            testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
             testDialog.img_next.setOnClickListener {
                 if (i < wordList.size - 1) {
                     testDialog.txt_spelling.text = wordList[++i].spelling
+                    testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
                     testDialog.txt_answer.text = ""
 
                 } else {
@@ -84,6 +86,7 @@ class TestAdapter(val activity: Activity, val viewModel: WordViewModel) :
                 if (i > 0) {
                     testDialog.txt_spelling.text = wordList[--i].spelling
                     testDialog.txt_answer.text = ""
+                    testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
 
                 } else {
                     activity.shortToast("처음 문제입니다.")

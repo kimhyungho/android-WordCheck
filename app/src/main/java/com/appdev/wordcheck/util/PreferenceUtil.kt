@@ -1,5 +1,6 @@
 package com.appdev.wordcheck.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 
@@ -25,5 +26,10 @@ class PreferenceUtil (context: Context) {
         preference.edit()
             .putBoolean(key, value)
             .apply()
+    }
+
+    @SuppressLint("CommitPrefEdits")
+    fun allDelete() {
+        preference.edit().clear().apply()
     }
 }

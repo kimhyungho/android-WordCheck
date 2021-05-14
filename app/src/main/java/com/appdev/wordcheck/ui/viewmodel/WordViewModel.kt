@@ -101,7 +101,7 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
 
                 }, {
                     _scoreWordTaskEvent.postValue(Event(false))
-                    _toastMessage.postValue(Event("단어채점 실패"))
+                    _toastMessage.postValue(Event("채점 완료"))
                 })
         )
 

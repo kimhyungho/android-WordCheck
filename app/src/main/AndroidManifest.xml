@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.view.DetailContentActivity"></activity>
-        <activity android:name=".ui.view.ContentActivity" />
         <activity android:name=".ui.view.SearchActivity" />
         <activity android:name=".ui.view.SignUpActivity" />
-        <activity android:name=".ui.view.LoginActivity">
+        <activity android:name=".ui.view.LoginActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

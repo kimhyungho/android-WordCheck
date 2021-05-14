@@ -17,6 +17,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, UserViewModel>() {
     override val viewModel: UserViewModel by viewModel()
 
     override fun initStartView() {
+        setTheme(R.style.AppTheme)
         initClickEvent()
         setupToast(this, viewModel.toastMessage)
     }

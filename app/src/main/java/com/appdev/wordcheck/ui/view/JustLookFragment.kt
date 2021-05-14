@@ -10,6 +10,7 @@ import com.appdev.wordcheck.ui.adapter.ContentAdapter
 import com.appdev.wordcheck.ui.base.BaseFragment
 import com.appdev.wordcheck.ui.viewmodel.WordViewModel
 import com.appdev.wordcheck.util.EventObserver
+import com.appdev.wordcheck.util.LoginPreference
 import com.appdev.wordcheck.util.setupToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.acos
@@ -54,11 +55,18 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
 
     private fun initClickEvent() {
         viewDataBinding.tbJust.setOnClickListener { onToolbarClick() }
+        viewDataBinding.btnLogout.setOnClickListener { onLogoutClick() }
 
     }
 
     private fun onToolbarClick() {
         startActivity(Intent(activity, SearchActivity::class.java))
+    }
+
+    private fun onLogoutClick() {
+        LoginPreference.logout()
+        startActivity(Intent(activity, LoginActivity::class.java))
+        activity!!.finish()
     }
 
 }

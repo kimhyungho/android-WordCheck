@@ -17,4 +17,8 @@ object LoginPreference {
     fun getUserAccountToken(): String {
         return WordCheckApplication.preferences.getString("account_token", "null")
     }
+
+    fun logout() {
+        WordCheckApplication.preferences.allDelete()
+    }
 }
