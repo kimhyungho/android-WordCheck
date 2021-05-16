@@ -61,30 +61,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
 
     private fun initViewPager() {
-        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter.setFragmentList(
-            listOf(
-                JustLookFragment(),
-                TestFragment(),
-                AddWordFragment(),
-                BookmarkFragment(),
-                WrongWordFragment()
-            )
-        )
+        viewPagerAdapter = ViewPagerAdapter(this)
         viewDataBinding.vpMain.adapter = viewPagerAdapter
-        viewDataBinding.vpMain.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {}
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
+        viewDataBinding.vpMain.isUserInputEnabled = false
 
-            override fun onPageSelected(position: Int) {
-                viewDataBinding.bnvMain.menu.getItem(position).isChecked = true
-            }
-        })
     }
 
     private fun onClickLogout() {

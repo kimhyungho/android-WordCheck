@@ -1,6 +1,7 @@
 package com.appdev.wordcheck.ui.view
 
 import android.app.Dialog
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.data.model.domain.Content
@@ -24,6 +25,7 @@ class TestFragment : BaseFragment<FragmentTestBinding, WordViewModel>() {
     lateinit var wrongAdapter: TestWrongAdapter
 
     override fun initStartView() {
+        Log.d("kkkk", "ok")
         initRecyclerView()
         initClickEvent()
         activity!!.setupToast(this, viewModel.toastMessage)

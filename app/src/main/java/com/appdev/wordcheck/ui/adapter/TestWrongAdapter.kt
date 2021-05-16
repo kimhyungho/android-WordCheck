@@ -35,8 +35,7 @@ class TestWrongAdapter(val activity: Activity, val viewModel: WordViewModel) :
             binding.data = item
             binding.btnConentContainer.setOnClickListener {
                 val content = item.content
-                activity.shortToast(position.toString())
-//                onContainerClick(position+1)
+                onContainerClick(position + 1)
             }
         }
 
@@ -67,48 +66,55 @@ class TestWrongAdapter(val activity: Activity, val viewModel: WordViewModel) :
 
         viewModel.getContentWordTaskEvent.observe(activity as LifecycleOwner, EventObserver {
             wordList = it.shuffled()
-            val testDialog = Dialog(activity)
-            testDialog.setContentView(R.layout.popup_test)
-            testDialog.txt_spelling.text = wordList[i].spelling
-            testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
-            testDialog.img_next.setOnClickListener {
-                if (i < wordList.size - 1) {
-                    testDialog.txt_spelling.text = wordList[++i].spelling
-                    testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
-                    testDialog.txt_answer.text = ""
+            if (wordList.size > 0) {
+                val testDialog = Dialog(activity)
+                testDialog.setContentView(R.layout.popup_test)
+                testDialog.txt_spelling.text = wordList[i].spelling
+                testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
+                testDialog.img_next.setOnClickListener {
+                    if (i < wordList.size - 1) {
+                        testDialog.txt_spelling.text = wordList[++i].spelling
+                        testDialog.txt_page.text =
+                            (i + 1).toString() + "/" + wordList.size.toString()
+                        testDialog.txt_answer.text = ""
 
-                } else {
-                    activity.shortToast("마지막 문제 입니다.")
+                    } else {
+                        activity.shortToast("마지막 문제 입니다.")
+                    }
                 }
-            }
-            testDialog.img_previous.setOnClickListener {
-                if (i > 0) {
-                    testDialog.txt_spelling.text = wordList[--i].spelling
-                    testDialog.txt_answer.text = ""
-                    testDialog.txt_page.text = (i + 1).toString() + "/" + wordList.size.toString()
+                testDialog.img_previous.setOnClickListener {
+                    if (i > 0) {
+                        testDialog.txt_spelling.text = wordList[--i].spelling
+                        testDialog.txt_answer.text = ""
+                        testDialog.txt_page.text =
+                            (i + 1).toString() + "/" + wordList.size.toString()
 
-                } else {
-                    activity.shortToast("처음 문제입니다.")
+                    } else {
+                        activity.shortToast("처음 문제입니다.")
+
+                    }
+                }
+                testDialog.btn_look_answer.setOnClickListener {
+                    testDialog.txt_answer.text = wordList[i].meaning
+                }
+                testDialog.btn_correct.setOnClickListener {
+                    val id = wordList[i].id
+                    viewModel.scoreWord(id, "correct")
 
                 }
+                testDialog.btn_wrong.setOnClickListener {
+                    val id = wordList[i].id
+                    viewModel.scoreWord(id, "wrong")
+                    viewModel
+                }
+                testDialog.btn_close.setOnClickListener {
+                    testDialog.dismiss()
+                }
+                testDialog.show()
+            } else {
+                activity.shortToast("문제가 존재하지 않습니다.")
             }
-            testDialog.btn_look_answer.setOnClickListener {
-                testDialog.txt_answer.text = wordList[i].meaning
-            }
-            testDialog.btn_correct.setOnClickListener {
-                val id = wordList[i].id
-                viewModel.scoreWord(id, "correct")
 
-            }
-            testDialog.btn_wrong.setOnClickListener {
-                val id = wordList[i].id
-                viewModel.scoreWord(id, "wrong")
-                viewModel
-            }
-            testDialog.btn_close.setOnClickListener {
-                testDialog.dismiss()
-            }
-            testDialog.show()
         })
 
 

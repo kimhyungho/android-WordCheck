@@ -1,23 +1,28 @@
 package com.appdev.wordcheck.ui.adapter
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.appdev.wordcheck.ui.view.*
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) :
-    FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    private val fragmentList = mutableListOf<Fragment>()
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
+//    private val fragmentList = mutableListOf<Fragment>()
 
-    fun setFragmentList(list: List<Fragment>) {
-        fragmentList.clear()
-        fragmentList.addAll(list)
+    override fun getItemCount(): Int {
+        return 5
     }
 
-    override fun getItem(position: Int): Fragment {
-        return fragmentList[position]
-    }
-
-    override fun getCount(): Int {
-        return fragmentList.size
+    override fun createFragment(position: Int): Fragment {
+        return when (position) {
+            0 -> JustLookFragment()
+            1 -> TestFragment()
+            2 -> AddWordFragment()
+            3 -> BookmarkFragment()
+            4 -> WrongWordFragment()
+            else -> JustLookFragment()
+        }
     }
 }

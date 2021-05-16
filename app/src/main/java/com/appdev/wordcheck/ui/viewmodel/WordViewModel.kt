@@ -55,6 +55,7 @@ class WordViewModel(private val repo: WordRepo) : BaseViewModel() {
     }
 
     fun addWord(contents: String, spelling: String, category: String, meaning: String) {
+
         addDisposable(
             repo.addWord(contents, spelling, category, meaning)
                 .subscribe({
