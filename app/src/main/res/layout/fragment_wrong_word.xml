@@ -29,11 +29,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="1"
-                android:textColor="@color/colorPrimary"
-                android:textSize="50sp"
+                android:textColor="@color/whiteColor"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_num1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번 틀린"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_num1"
+                app:layout_constraintStart_toEndOf="@+id/txt_num1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="단어 보기"
+                android:textColor="@color/whiteColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txt_num1"
+                app:layout_constraintTop_toBottomOf="@+id/txt_num1" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,11 +80,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="2"
-                android:textColor="@color/colorPrimary"
-                android:textSize="50sp"
+                android:textColor="@color/whiteColor"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_num1_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번 틀린"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_num2"
+                app:layout_constraintStart_toEndOf="@+id/txt_num2" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="단어 보기"
+                android:textColor="@color/whiteColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txt_num2"
+                app:layout_constraintTop_toBottomOf="@+id/txt_num2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,11 +131,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="3"
-                android:textColor="@color/colorPrimary"
-                android:textSize="50sp"
+                android:textColor="@color/whiteColor"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_num1_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번 틀린"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_num3"
+                app:layout_constraintStart_toEndOf="@+id/txt_num3" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="단어 보기"
+                android:textColor="@color/whiteColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txt_num3"
+                app:layout_constraintTop_toBottomOf="@+id/txt_num3" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -112,11 +181,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="4"
-                android:textColor="@color/colorPrimary"
-                android:textSize="50sp"
+                android:textColor="@color/whiteColor"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_num1_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번 틀린"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_num4"
+                app:layout_constraintStart_toEndOf="@+id/txt_num4" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="단어 보기"
+                android:textColor="@color/whiteColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txt_num4"
+                app:layout_constraintTop_toBottomOf="@+id/txt_num4" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,11 +233,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="5"
-                android:textColor="@color/colorPrimary"
-                android:textSize="50sp"
+                android:textColor="@color/whiteColor"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_num1_text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번 이상 틀린"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_num5"
+                app:layout_constraintStart_toEndOf="@+id/txt_num5" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:text="단어 보기"
+                android:textColor="@color/whiteColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txt_num5"
+                app:layout_constraintTop_toBottomOf="@+id/txt_num5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

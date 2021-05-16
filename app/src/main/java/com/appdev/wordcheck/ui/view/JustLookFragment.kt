@@ -21,7 +21,7 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
 
     override val viewModel: WordViewModel by viewModel<WordViewModel>()
 
-    lateinit var contentAdapter : ContentAdapter
+    lateinit var contentAdapter: ContentAdapter
 
     override fun initStartView() {
         initClickEvent()
@@ -54,19 +54,8 @@ class JustLookFragment : BaseFragment<FragmentJustLookBinding, WordViewModel>() 
     }
 
     private fun initClickEvent() {
-        viewDataBinding.tbJust.setOnClickListener { onToolbarClick() }
-        viewDataBinding.btnLogout.setOnClickListener { onLogoutClick() }
 
     }
 
-    private fun onToolbarClick() {
-        startActivity(Intent(activity, SearchActivity::class.java))
-    }
-
-    private fun onLogoutClick() {
-        LoginPreference.logout()
-        startActivity(Intent(activity, LoginActivity::class.java))
-        activity!!.finish()
-    }
 
 }

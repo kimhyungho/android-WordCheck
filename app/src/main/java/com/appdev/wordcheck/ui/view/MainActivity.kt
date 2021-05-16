@@ -1,11 +1,15 @@
 package com.appdev.wordcheck.ui.view
 
+import android.content.Intent
+import android.view.MenuItem
+import android.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.databinding.ActivityMainBinding
 import com.appdev.wordcheck.ui.adapter.ViewPagerAdapter
 import com.appdev.wordcheck.ui.base.BaseActivity
 import com.appdev.wordcheck.ui.base.BaseViewModel
+import com.appdev.wordcheck.util.LoginPreference
 import kotlin.properties.Delegates
 
 class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
@@ -16,6 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     override fun initStartView() {
+        initClickEvent()
         initBottomNavigation()
         initViewPager()
     }
@@ -25,7 +30,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
     override fun initAfterBinding() {
     }
-
 
 
     private fun initBottomNavigation() {
@@ -43,6 +47,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
             true
         }
     }
+
+    private fun initClickEvent() {
+        viewDataBinding.tbMain.setNavigationOnClickListener { onClickLogout() }
+        viewDataBinding.tbMain.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_search -> onClickSearch()
+            }
+
+            true
+        }
+    }
+
 
     private fun initViewPager() {
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
@@ -62,11 +78,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
-            ) {}
+            ) {
+            }
 
             override fun onPageSelected(position: Int) {
                 viewDataBinding.bnvMain.menu.getItem(position).isChecked = true
             }
         })
+    }
+
+    private fun onClickLogout() {
+        LoginPreference.logout()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    private fun onClickSearch() {
+        startActivity(Intent(this, SearchActivity::class.java))
     }
 }

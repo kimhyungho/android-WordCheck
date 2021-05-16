@@ -30,9 +30,32 @@
             app:layout_constraintBottom_toTopOf="@+id/bnv_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tb_main">
 
         </androidx.viewpager.widget.ViewPager>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/dark2Color"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_main_toolbar"
+            app:navigationIcon="@drawable/ic_logout" />
+
+        <ImageView
+            android:id="@+id/img_tb_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toTopOf="@+id/vp_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tb_main"
+            app:layout_constraintTop_toTopOf="@+id/tb_main"
+            app:srcCompat="@drawable/h_logo" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
