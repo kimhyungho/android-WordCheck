@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="330dp"
         android:layout_height="475dp"
         android:background="@color/dark2Color">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_img"
+            android:layout_width="55dp"
+            android:layout_height="54dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_page"
+            app:layout_constraintEnd_toEndOf="@+id/txt_page"
+            app:layout_constraintStart_toStartOf="@+id/txt_page"
+            app:layout_constraintTop_toTopOf="@+id/txt_page"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false" />
 
         <TextView
             android:id="@+id/txt_spelling"
@@ -47,114 +58,20 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_spelling"
             tools:text="구글" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_correct"
+        <Button
+            android:id="@+id/btn_next"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="60dp"
-            android:background="@color/yellowColor"
-            app:layout_constraintEnd_toStartOf="@+id/btn_wrong"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_answer">
-
-            <TextView
-                android:id="@+id/txt_correct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="정답"
-                android:textColor="@color/whiteColor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_wrong"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="60dp"
-            android:background="@color/greenColor"
-            app:layout_constraintEnd_toStartOf="@+id/btn_look_answer"
-            app:layout_constraintStart_toEndOf="@+id/btn_correct"
-            app:layout_constraintTop_toBottomOf="@+id/txt_answer">
-
-            <TextView
-                android:id="@+id/txt_wrong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="오답"
-                android:textColor="@color/whiteColor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_look_answer"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="60dp"
-            android:background="@color/blueColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_wrong"
-            app:layout_constraintTop_toBottomOf="@+id/txt_answer">
-
-            <TextView
-                android:id="@+id/txt_look_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="정답보기"
-                android:textColor="@color/whiteColor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/txt_next"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false"
             android:text="다음문제"
-            android:textColor="@color/whiteColor"
-            app:layout_constraintBottom_toBottomOf="@+id/img_next"
-            app:layout_constraintEnd_toStartOf="@+id/img_next"
-            app:layout_constraintTop_toTopOf="@+id/img_next" />
-
-        <TextView
-            android:id="@+id/txt_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이전문제"
-            android:textColor="@color/whiteColor"
-            app:layout_constraintBottom_toBottomOf="@+id/img_previous"
-            app:layout_constraintStart_toEndOf="@+id/img_previous"
-            app:layout_constraintTop_toTopOf="@+id/img_previous" />
-
-        <ImageView
-            android:id="@+id/img_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_correct"
-            app:srcCompat="@android:drawable/ic_media_rew" />
-
-        <ImageView
-            android:id="@+id/img_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_look_answer"
-            app:srcCompat="@android:drawable/ic_media_ff" />
+            app:layout_constraintStart_toEndOf="@+id/btn_answer"
+            app:layout_constraintTop_toBottomOf="@+id/rg_test" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/txt_test_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -168,11 +85,81 @@
             android:id="@+id/txt_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:textColor="@color/whiteColor"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_previous"
-            app:layout_constraintEnd_toStartOf="@+id/txt_next"
-            app:layout_constraintStart_toEndOf="@+id/txt_previous"
-            app:layout_constraintTop_toTopOf="@+id/txt_previous" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1/12" />
+
+        <RadioGroup
+            android:id="@+id/rg_test"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_answer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton"
+                    android:textColor="@color/whiteColor" />
+
+                <RadioButton
+                    android:id="@+id/rb_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton"
+                    android:textColor="@color/whiteColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton"
+                    android:textColor="@color/whiteColor" />
+
+                <RadioButton
+                    android:id="@+id/rb_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton"
+                    android:textColor="@color/whiteColor" />
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="6dp"
+            android:enabled="false"
+            android:text="정답확인"
+            app:layout_constraintEnd_toStartOf="@+id/btn_next"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_test" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

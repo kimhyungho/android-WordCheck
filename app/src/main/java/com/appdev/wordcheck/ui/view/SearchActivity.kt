@@ -22,6 +22,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, WordViewModel>() {
 
 
     override fun initStartView() {
+        initClickEvent()
         initRecyclerView()
         initPutTextEvent()
         setupToast(this, viewModel.toastMessage)
@@ -64,5 +65,13 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, WordViewModel>() {
                 }
             }
         })
+    }
+
+    private fun initClickEvent() {
+        viewDataBinding.tbSearch.setNavigationOnClickListener { onBackButtonClick() }
+    }
+
+    private fun onBackButtonClick() {
+        finish()
     }
 }

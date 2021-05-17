@@ -11,4 +11,18 @@
         <item>접속사</item>
         <item>감탄사</item>
     </string-array>
+
+    <string-array name="noun">
+        <item>정답1</item>
+        <item>정답2</item>
+        <item>정답3</item>
+        <item>정답4</item>
+        <item>정답5</item>
+        <item>정답6</item>
+        <item>정답7</item>
+        <item>정답8</item>
+    </string-array>
+
+
+
 </resources>
