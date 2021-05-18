@@ -43,4 +43,5 @@ class AddWordFragment : BaseFragment<FragmentAddWordBinding, WordViewModel>() {
         }
 
     }
+
 }

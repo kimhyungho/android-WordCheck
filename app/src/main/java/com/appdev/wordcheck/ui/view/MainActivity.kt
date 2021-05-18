@@ -1,21 +1,24 @@
 package com.appdev.wordcheck.ui.view
 
 import android.content.Intent
-import android.view.MenuItem
-import android.widget.Toolbar
-import androidx.viewpager.widget.ViewPager
+import com.airbnb.lottie.animation.content.Content
 import com.appdev.wordcheck.R
 import com.appdev.wordcheck.databinding.ActivityMainBinding
 import com.appdev.wordcheck.ui.adapter.ViewPagerAdapter
 import com.appdev.wordcheck.ui.base.BaseActivity
-import com.appdev.wordcheck.ui.base.BaseViewModel
+import com.appdev.wordcheck.ui.viewmodel.WordViewModel
+import com.appdev.wordcheck.util.EventObserver
 import com.appdev.wordcheck.util.LoginPreference
 import kotlin.properties.Delegates
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
+
+class MainActivity : BaseActivity<ActivityMainBinding, WordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_main
-    override val viewModel = BaseViewModel()
+    override val viewModel: WordViewModel by viewModel()
+
+    lateinit var contentList: List<com.appdev.wordcheck.data.model.domain.Content>
 
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
@@ -61,10 +64,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
 
     private fun initViewPager() {
-        viewPagerAdapter = ViewPagerAdapter(this)
-        viewDataBinding.vpMain.adapter = viewPagerAdapter
-        viewDataBinding.vpMain.isUserInputEnabled = false
-
+        viewModel.getContentList()
+        viewModel.getContentListTaskEvent.observe(this, EventObserver {
+            viewPagerAdapter = ViewPagerAdapter(this)
+            viewPagerAdapter.getContent(it as MutableList<com.appdev.wordcheck.data.model.domain.Content>)
+            viewDataBinding.vpMain.adapter = viewPagerAdapter
+            viewDataBinding.vpMain.isUserInputEnabled = false
+        })
     }
 
     private fun onClickLogout() {
