@@ -1,13 +1,13 @@
 # WordCheck
 <p align="center">
-  <img width="100" height="100" src="https://github.com/kimhyungho/ANDROID-CabbageMarket/blob/master/app_logo.png">
+  <img width="100" height="100" src="https://github.com/kimhyungho/WordCheck/blob/master/app_logo.png">
 </p>
 <p align="center">
   <b>WordCheck</b>
   </br>
   단어장 어플리케이션
   </br>
-  <a href="https://github.com/kimhyungho/ANDROID-CabbageMarket/">Project Link>></a>
+  <a href="https://github.com/kimhyungho/WordCheck/">Project Link>></a>
 </p>
 
 
@@ -19,21 +19,15 @@ MVVM 아키텍처</br>
 
 
 # Used Library
-<a href="https://firebase.google.com/?gclid=EAIaIQobChMIsM2akNeo7wIV2HwrCh0SwQCNEAAYASAAEgLB9_D_BwE&gclsrc=aw.ds">firebase</a>
-
 <a href="https://github.com/bumptech/glide">glide</a>
 
 <a href="https://square.github.io/retrofit/">retrofit2</a>
 
-<a href="https://github.com/aabhasr1/OtpView">OtpView</a>
-
-
 # Used API
-<a href="https://dev.vworld.kr/dev/v4dv_2ddataguide2_s002.do?svcIde=ademd">공간정보 오픈 플랫폼 브이월드 위치기반 읍면동 API</a>
 
 
 # Used Image
-<a href="https://pixabay.com/ko/">pixabay</a>
+<a href="https://www.flaticon.com/">flaticon</a>
 
 
 # App Image
