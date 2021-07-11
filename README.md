@@ -1,6 +1,6 @@
 # WordCheck
 <p align="center">
-  <img width="100" height="100" src="https://github.com/kimhyungho/WordCheck/blob/master/app_logo.png">
+  <img width="100" height="100" src="https://github.com/kimhyungho/WordCheck/blob/master/logo.png">
 </p>
 <p align="center">
   <b>WordCheck</b>
