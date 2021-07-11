@@ -41,7 +41,7 @@ val networkModule = module {
         Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://sulrae.com/api/")
+      //      .baseUrl("BASEURL")
             .build()
             .create(WordService::class.java)
     }
