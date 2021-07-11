@@ -12,18 +12,20 @@
 
 
 
-# About the Project
-<b>ING... 진행중</b></br>
-동기의 django 데이터베이스를 사용한 단어장 어플리케이션</br>
+# WORDCHECK란
+단어장 어플리케이션</br>
 MVVM 아키텍처</br>
 
 
 # Used Library
 <a href="https://github.com/bumptech/glide">glide</a>
-
 <a href="https://square.github.io/retrofit/">retrofit2</a>
+<a href="https://insert-koin.io/">koin</a>
+<a href="https://lottiefiles.com/">lottie</a>
+
 
 # Used API
+동기의 장고 서버 API</br>
 
 
 # Used Image
